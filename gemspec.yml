@@ -1,0 +1,28 @@
+name: ruby-amass
+summary: A Ruby interface to amass.
+description:
+  A Ruby interface to amass, an in-depth Attack Surface Mapping and Asset
+  Discovery tool.
+
+license: MIT
+authors: Postmodern
+email: postmodern.mod3@gmail.com
+homepage: https://github.com/postmodern/ruby-amass#readme
+has_yard: true
+
+metadata:
+  documentation_uri: https://rubydoc.info/gems/ruby-amass
+  source_code_uri:   https://github.com/postmodern/ruby-amass
+  bug_tracker_uri:   https://github.com/postmodern/ruby-amass/issues
+  changelog_uri:     https://github.com/postmodern/ruby-amass/blob/master/ChangeLog.md
+
+required_ruby_version: ">= 2.0.0"
+
+requirements: amass >= 1.0.0
+
+dependencies:
+  command_mapper: ~> 0.1
+  nokogiri: ~> 1.0
+
+development_dependencies:
+  bundler: ~> 2.0
