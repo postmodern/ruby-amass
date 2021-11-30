@@ -8,7 +8,7 @@ module Amass
     #
     # Parses single-line JSON hashes.
     #
-    # @api private
+    # @api semipublic
     #
     module JSON
       #

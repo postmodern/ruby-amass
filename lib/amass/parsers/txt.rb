@@ -5,7 +5,7 @@ module Amass
     #
     # Parses single-line hostnames.
     #
-    # @api private
+    # @api semipublic
     #
     module TXT
       #
