@@ -16,6 +16,8 @@ module Amass
     # @return [String]
     attr_reader :desc
 
+    alias description desc
+
     #
     # @param [String] ip
     #
