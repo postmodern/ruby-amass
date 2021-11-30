@@ -14,7 +14,9 @@ Discovery tool.
 
 ## Features
 
-* Provides a Ruby interface for running the `amass` command.
+* Provides a [Ruby interface][Amass::Command] for running the `amass` command.
+
+[Amass::Command]: https://rubydoc.info/gems/ruby-amass/Amass/Command
 
 ## Examples
 
