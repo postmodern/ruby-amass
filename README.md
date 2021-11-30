@@ -33,6 +33,10 @@ Amass::Command.run(enum: {domain: 'example.com'})
 * [command_mapper] ~> 0.1
 * [nokogiri] ~> 1.0
 
+[ruby]: https://www.ruby-lang.org/
+[command_mapper]: https://github.com/postmodern/command_mapper.rb#readme
+[nokogiri]: http://nokogiri.rubyforge.org/
+
 ## Install
 
 ```shell
@@ -58,5 +62,3 @@ Copyright (c) 2021 Hal Brodigan
 See {file:LICENSE.txt} for license information.
 
 [amass]: https://github.com/OWASP/Amass#readme
-[ruby]: https://www.ruby-lang.org/
-[command_mapper]: https://github.com/postmodern/command_mapper.rb#readme
