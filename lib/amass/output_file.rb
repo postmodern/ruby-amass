@@ -10,6 +10,8 @@ module Amass
   class OutputFile
 
     # Mapping of formats to parsers.
+    #
+    # @api private
     PARSERS = {
       :json => Parsers::JSON,
       :txt  => Parsers::TXT
@@ -47,6 +49,8 @@ module Amass
     end
 
     # Mapping of file extensions to formats
+    #
+    # @api private
     FILE_FORMATS = {
       '.json' => :json,
       '.txt'  => :txt
@@ -63,6 +67,8 @@ module Amass
     #
     # @raise [ArgumentError]
     #   The output format could not be inferred from the file's name.
+    #
+    # @api private
     #
     def self.infer_format(path)
       FILE_FORMATS.fetch(File.extname(path)) do
