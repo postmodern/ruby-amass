@@ -6,17 +6,17 @@ module Amass
   #
   class Address
 
-    # The address'es IP v4 or v6 address.
+    # The IP v4 or v6 address.
     #
     # @return [String]
     attr_reader :ip
 
-    # The address'es CIDR mask.
+    # The CIDR mask.
     #
     # @return [String]
     attr_reader :cidr
 
-    # The address'es ASN number.
+    # The ASN number.
     #
     # @return [Integer]
     attr_reader :asn
@@ -54,7 +54,7 @@ module Amass
     # Converts the address to a String.
     #
     # @return [String]
-    #   The address'es IP address.
+    #   The IP address.
     #
     def to_s
       @ip
