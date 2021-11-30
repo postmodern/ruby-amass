@@ -11,14 +11,26 @@ module Amass
       #
       # Parses a single line of plain-text.
       #
-      # @param [String] line
-      #   An input line to parse.
+      # @param [IO] io
+      #   The IO stream to parse.
       #
-      # @return [Hostname]
+      # @yield [hostname]
+      #   The given block will be passed each parsed hostname.
+      #
+      # @yieldparam [Hostname] hostname
       #   The parsed hostname.
       #
-      def self.parse(line)
-        Hostname.new(name: line)
+      # @return [Enumerator]
+      #   If no block is given, an Enumerator will be returned.
+      #
+      def self.parse(io)
+        return enum_for(__method__,io) unless block_given?
+
+        io.each_line do |line|
+          line.chomp!
+
+          yield Hostname.new(name: line)
+        end
       end
     end
   end

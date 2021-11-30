@@ -93,15 +93,11 @@ module Amass
     # @return [Enumerator]
     #   If no block is given, an Enumerator object will be returned.
     #
-    def each
-      return enum_for(__method__) unless block_given?
+    def each(&block)
+      return enum_for(__method__) unless block
 
       File.open(@path) do |file|
-        file.each_line do |line|
-          line.chomp!
-
-          yield @parser.parse(line)
-        end
+        @parser.parse(file,&block)
       end
     end
 

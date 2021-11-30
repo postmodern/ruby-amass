@@ -14,16 +14,27 @@ module Amass
       #
       # Parses a single-line of JSON.
       #
-      # @param [String] line
-      #   The line of JSON.
+      # @param [IO] io
+      #   The IO stream to parse.
       #
-      # @return [Hostname]
+      # @yield [hostname]
+      #   The given block will be passed each parsed hostname.
+      #
+      # @yieldparam [Hostname] hostname
       #   The parsed hostname.
       #
-      def self.parse(line)
-        json = ::JSON.parse(line)
+      # @return [Enumerator]
+      #   If no block is given, an Enumerator will be returned.
+      #
+      def self.parse(io)
+        return enum_for(__method__,io) unless block_given?
 
-        return map_hostname(json)
+        io.each_line do |line|
+          line.chomp!
+          json = ::JSON.parse(line)
+
+          yield map_hostname(json)
+        end
       end
 
       private

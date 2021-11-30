@@ -4,31 +4,25 @@ require 'amass/parsers/txt'
 describe Amass::Parsers::TXT do
   describe ".parse" do
     let(:line) { "wbldr2.example.com" }
+    let(:io)   { StringIO.new(line + $/) }
 
-    subject { described_class.parse(line) }
+    it "must parse each line and yield Amass::Hostname objects" do
+      yielded_hostnames = []
 
-    it "must return a Hostname object" do
-      expect(subject).to be_kind_of(Amass::Hostname)
-    end
+      subject.parse(io) do |hostname|
+        yielded_hostnames << hostname
+      end
 
-    it "must initialize the Hostname's #name to the line" do
-      expect(subject.name).to eq(line)
-    end
+      expect(yielded_hostnames.length).to eq(1)
+      expect(yielded_hostnames.first).to be_kind_of(Amass::Hostname)
 
-    it "must initialize the Hostname's #domain to nil" do
-      expect(subject.domain).to be(nil)
-    end
+      yielded_hostname = yielded_hostnames.first
 
-    it "must initialize the Hostname's #addresses to []" do
-      expect(subject.addresses).to eq([])
-    end
-
-    it "must initialize the Hostname's #tag to nil" do
-      expect(subject.tag).to be(nil)
-    end
-
-    it "must initialize the Hostname's #sources to []" do
-      expect(subject.sources).to eq([])
+      expect(yielded_hostname.name).to eq(line)
+      expect(yielded_hostname.domain).to be(nil)
+      expect(yielded_hostname.addresses).to eq([])
+      expect(yielded_hostname.tag).to be(nil)
+      expect(yielded_hostname.sources).to eq([])
     end
   end
 end

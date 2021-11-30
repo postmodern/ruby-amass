@@ -22,67 +22,39 @@ describe Amass::Parsers::JSON do
     let(:line) do
       %{{"name":"#{name}","domain":"#{domain}","addresses":[{"ip":"#{ip1}","cidr":"#{cidr1}","asn":#{asn1},"desc":"#{desc1}"},{"ip":"#{ip2}","cidr":"#{cidr2}","asn":#{asn2},"desc":"#{desc2}"}],"tag":"#{tag}","sources":["#{source1}"]}}
     end
+    let(:io) { StringIO.new(line + $/) }
 
-    subject { described_class.parse(line) }
+    it "must parse each line and yield Amass::Hostname objects" do
+      yielded_hostnames = []
 
-    it "must return a Hostname object" do
-      expect(subject).to be_kind_of(Amass::Hostname)
-    end
-
-    it "must initialize the Hostname's #name to the 'name' attribute" do
-      expect(subject.name).to eq(name)
-    end
-
-    it "must initialize the Hostname's #domain to the 'domain' attribute" do
-      expect(subject.domain).to eq(domain)
-    end
-
-    it "must initialize the Hostname's #addresses to an Array of Addresses" do
-      expect(subject.addresses).to be_kind_of(Array)
-      expect(subject.addresses.length).to eq(2)
-      expect(subject.addresses).to all(be_kind_of(Amass::Address))
-    end
-
-    describe "Hostname#addresses" do
-      subject { super().addresses }
-
-      it "must initialize Address#ip using the 'ip' attributes" do
-        expect(subject[0].ip).to eq(ip1)
-        expect(subject[1].ip).to eq(ip2)
+      subject.parse(io) do |hostname|
+        yielded_hostnames << hostname
       end
 
-      it "must initialize Address#cidr using the 'cidr' attributes" do
-        expect(subject[0].cidr).to eq(cidr1)
-        expect(subject[1].cidr).to eq(cidr2)
-      end
+      expect(yielded_hostnames.length).to eq(1)
+      expect(yielded_hostnames.first).to be_kind_of(Amass::Hostname)
 
-      it "must initialize Address#asn using the 'asn' attributes" do
-        expect(subject[0].asn).to eq(asn1)
-        expect(subject[1].asn).to eq(asn2)
-      end
+      yielded_hostname = yielded_hostnames.first
 
-      it "must initialize Address#desc using the 'desc' attributes" do
-        expect(subject[0].desc).to eq(desc1)
-        expect(subject[1].desc).to eq(desc2)
-      end
-    end
+      expect(yielded_hostname.name).to eq(name)
+      expect(yielded_hostname.domain).to eq(domain)
 
-    it "must initialize the Hostname's #tag to the 'tag' attribute" do
-      expect(subject.tag).to eq(tag)
-    end
+      expect(yielded_hostname.addresses).to be_kind_of(Array)
+      expect(yielded_hostname.addresses.length).to eq(2)
+      expect(yielded_hostname.addresses).to all(be_kind_of(Amass::Address))
 
-    describe "Hostname#sources" do
-      subject { super().sources }
+      expect(yielded_hostname.addresses[0].ip).to eq(ip1)
+      expect(yielded_hostname.addresses[0].cidr).to eq(cidr1)
+      expect(yielded_hostname.addresses[0].asn).to eq(asn1)
+      expect(yielded_hostname.addresses[0].desc).to eq(desc1)
 
-      it "must initialize the Hostname's #sources to an Array of Strings" do
-        expect(subject).to be_kind_of(Array)
-        expect(subject.length).to eq(1)
-        expect(subject).to all(be_kind_of(String))
-      end
+      expect(yielded_hostname.addresses[1].ip).to eq(ip2)
+      expect(yielded_hostname.addresses[1].cidr).to eq(cidr2)
+      expect(yielded_hostname.addresses[1].asn).to eq(asn2)
+      expect(yielded_hostname.addresses[1].desc).to eq(desc2)
 
-      it "must initialize Hostname#sources using the 'sources' attribute" do
-        expect(subject).to eq([source1])
-      end
+      expect(yielded_hostname.tag).to eq(tag)
+      expect(yielded_hostname.sources).to eq([source1])
     end
   end
 end
