@@ -31,11 +31,9 @@ Amass::Command.run(enum: {domain: 'example.com'})
 * [ruby] >= 2.0.0
 * [amass] >= 3.0.0
 * [command_mapper] ~> 0.1
-* [nokogiri] ~> 1.0
 
 [ruby]: https://www.ruby-lang.org/
 [command_mapper]: https://github.com/postmodern/command_mapper.rb#readme
-[nokogiri]: http://nokogiri.rubyforge.org/
 
 ## Install
 
