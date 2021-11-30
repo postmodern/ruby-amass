@@ -2,6 +2,11 @@ require 'amass/parsers/json'
 require 'amass/parsers/txt'
 
 module Amass
+  #
+  # Represents either a `.json` or `.txt` output file.
+  #
+  # @api public
+  #
   class OutputFile
 
     PARSERS = {

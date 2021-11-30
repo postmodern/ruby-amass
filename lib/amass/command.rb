@@ -1,6 +1,11 @@
 require 'command_mapper/command'
 
 module Amass
+  #
+  # Represents the `amass` command and it's subcommands.
+  #
+  # @api public
+  #
   class Command < CommandMapper::Command
 
     command 'amass' do

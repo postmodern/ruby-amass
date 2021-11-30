@@ -1,6 +1,9 @@
 require 'amass/address'
 
 module Amass
+  #
+  # @api public
+  #
   class Hostname
 
     # @return [String]

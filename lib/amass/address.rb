@@ -1,4 +1,7 @@
 module Amass
+  #
+  # @api public
+  #
   class Address
 
     # @return [String]
