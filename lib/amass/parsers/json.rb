@@ -21,7 +21,7 @@ module Amass
       #   The parsed hostname.
       #
       def self.parse(line)
-        json = ::JSON.parse(line, symbolize_names: true)
+        json = ::JSON.parse(line)
 
         return map_hostname(json)
       end
@@ -39,11 +39,11 @@ module Amass
       #
       def self.map_hostname(json)
         Hostname.new(
-          name:      json[:name],
-          domain:    json[:domain],
-          addresses: json[:addresses].map(&method(:map_address)),
-          tag:       json[:tag],
-          sources:   json[:sources]
+          name:      json['name'],
+          domain:    json['domain'],
+          addresses: json['addresses'].map(&method(:map_address)),
+          tag:       json['tag'],
+          sources:   json['sources']
         )
       end
 
@@ -57,7 +57,12 @@ module Amass
       #   The resulting address.
       #
       def self.map_address(json)
-        Address.new(**json)
+        Address.new(
+          ip:   json['ip'],
+          cidr: json['cidr'],
+          asn:  json['asn'],
+          desc: json['desc']
+        )
       end
     end
   end
