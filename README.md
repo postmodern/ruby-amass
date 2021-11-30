@@ -15,8 +15,10 @@ Discovery tool.
 ## Features
 
 * Provides a [Ruby interface][Amass::Command] for running the `amass` command.
+* Supports [parsing][Amass::OutputFile] Amass `.txt` and `.json` output files.
 
 [Amass::Command]: https://rubydoc.info/gems/ruby-amass/Amass/Command
+[Amass::OutputFile]: https://rubydoc.info/gems/ruby-amass/Amass/OutputFile
 
 ## Examples
 
