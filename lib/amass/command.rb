@@ -4,6 +4,168 @@ module Amass
   #
   # Represents the `amass` command and it's subcommands.
   #
+  # ## `amass` subcommands
+  #
+  # ### `amass intel`
+  #
+  # * `-active` - `amass.active`
+  # * `-addr` - `amass.addr`
+  # * `-asn` - `amass.asn`
+  # * `-cidr` - `amass.cidr`
+  # * `-config` - `amass.config`
+  # * `-d` - `amass.domain`
+  # * `-demo` - `amass.demo`
+  # * `-df` - `amass.domains_file`
+  # * `-dir` - `amass.output_dir`
+  # * `-ef` - `amass.exclude_file`
+  # * `-exclude` - `amass.exclude`
+  # * `-help` - `amass.help`
+  # * `-if` - `amass.include_file`
+  # * `-include` - `amass.include`
+  # * `-ip` - `amass.ip`
+  # * `-ipv4` - `amass.ipv4`
+  # * `-ipv6` - `amass.ipv6`
+  # * `-list` - `amass.list`
+  # * `-log` - `amass.log`
+  # * `-max-dns-queries` - `amass.max_dns_queries`
+  # * `-o` - `amass.output`
+  # * `-org` - `amass.org`
+  # * `-p` - `amass.ports`
+  # * `-r` - `amass.resolver`
+  # * `-rf` - `amass.resolver_file`
+  # * `-src` - `amass.src`
+  # * `-timeout` - `amass.timeout`
+  # * `-v` - `amass.verbose`
+  # * `-whois` - `amass.whois`
+  #
+  # ### `amass enum`
+  #
+  # * `-active` - `amass.active`
+  # * `-addr` - `amass.addr`
+  # * `-asn` - `amass.asn`
+  # * `-aw` - `amass.alterations_wordlist_file`
+  # * `-awm` - `amass.alterations_wordlist_mask`
+  # * `-bl` - `amass.blacklist`
+  # * `-blf` - `amass.blacklist_file`
+  # * `-brute` - `amass.bruteforce`
+  # * `-cidr` - `amass.cidr`
+  # * `-config` - `amass.config`
+  # * `-d` - `amass.domain`
+  # * `-demo` - `amass.demo`
+  # * `-df` - `amass.domains_file`
+  # * `-dir` - `amass.output_dir`
+  # * `-ef` - `amass.exclude_file`
+  # * `-exclude` - `amass.exclude`
+  # * `-help` - `amass.help`
+  # * `-if` - `amass.include_file`
+  # * `-iface` - `amass.iface`
+  # * `-include` - `amass.include`
+  # * `-ip` - `amass.ip`
+  # * `-ipv4` - `amass.ipv4`
+  # * `-ipv6` - `amass.ipv6`
+  # * `-json` - `amass.json`
+  # * `-list` - `amass.list`
+  # * `-log` - `amass.log`
+  # * `-max-depth` - `amass.max_depth`
+  # * `-max-dns-queries` - `amass.max_dns_queries`
+  # * `-min-for-recursive` - `amass.min_for_recursive`
+  # * `-nf` - `amass.known_subdomains_file`
+  # * `-noalts` - `amass.no_alts`
+  # * `-nocolor` - `amass.no_color`
+  # * `-nolocaldb` - `amass.no_localdb`
+  # * `-norecursive` - `amass.no_recursive`
+  # * `-o` - `amass.output`
+  # * `-oA` - `amass.output_prefix`
+  # * `-p` - `amass.ports`
+  # * `-passive` - `amass.passive`
+  # * `-r` - `amass.resolver`
+  # * `-rf` - `amass.resolver_file`
+  # * `-scripts` - `amass.scripts`
+  # * `-share` - `amass.share`
+  # * `-silent` - `amass.silent`
+  # * `-src` - `amass.src`
+  # * `-timeout` - `amass.timeout`
+  # * `-v` - `amass.verbose`
+  # * `-w` - `amass.wordlist_file`
+  # * `-wm` - `amass.wordlist_mask`
+  #
+  # ### `amass viz`
+  #
+  # * `-config` - `amass.config`
+  # * `-d` - `amass.domain`
+  # * `-d3` - `amass.d3`
+  # * `-df` - `amass.domains_file`
+  # * `-dir` - `amass.database_dir`
+  # * `-dot` - `amass.dot`
+  # * `-enum` - `amass.enum`
+  # * `-gexf` - `amass.gexf`
+  # * `-graphistry` - `amass.graphistry`
+  # * `-help` - `amass.help`
+  # * `-i` - `amass.input`
+  # * `-maltego` - `amass.maltego`
+  # * `-nocolor` - `amass.nocolor`
+  # * `-o` - `amass.output`
+  # * `-silent` - `amass.silent`
+  #
+  # ### `amass track`
+  #
+  # * `-config` - `amass.config`
+  # * `-d` - `amass.domain`
+  # * `-df` - `amass.domains_file`
+  # * `-dir` - `amass.output_dir`
+  # * `-help` - `amass.help`
+  # * `-history` - `amass.history`
+  # * `-last` - `amass.last`
+  # * `-nocolor` - `amass.nocolor`
+  # * `-silent` - `amass.silent`
+  # * `-since` - `amass.since`
+  #
+  # ### `amass db`
+  #
+  # * `-config` - `amass.config`
+  # * `-d` - `amass.domain`
+  # * `-demo` - `amass.demo`
+  # * `-df` - `amass.domains_file`
+  # * `-dir` - `amass.output_dir`
+  # * `-enum` - `amass.enum`
+  # * `-help` - `amass.help`
+  # * `-ip` - `amass.ip`
+  # * `-ipv4` - `amass.ipv4`
+  # * `-ipv6` - `amass.ipv6`
+  # * `-list` - `amass.list`
+  # * `-names` - `amass.names`
+  # * `-nocolor` - `amass.nocolor`
+  # * `-o` - `amass.output`
+  # * `-show` - `amass.show`
+  # * `-silent` - `amass.silent`
+  # * `-src` - `amass.src`
+  # * `-summary` - `amass.summary`
+  #
+  # ### `amass dns`
+  #
+  # * `-bl` - `amass.blacklist`
+  # * `-blf` - `amass.blacklist_file`
+  # * `-config` - `amass.config`
+  # * `-d` - `amass.domain`
+  # * `-demo` - `amass.demo`
+  # * `-df` - `amass.domains_file`
+  # * `-dir` - `amass.output_dir`
+  # * `-help` - `amass.help`
+  # * `-ip` - `amass.ip`
+  # * `-ipv4` - `amass.ipv4`
+  # * `-ipv6` - `amass.ipv6`
+  # * `-json` - `amass.json`
+  # * `-log` - `amass.log`
+  # * `-max-dns-queries` - `amass.max_dns_queries`
+  # * `-nf` - `amass.known_subdomains_file`
+  # * `-o` - `amass.output`
+  # * `-oA` - `amass.output_prefix`
+  # * `-r` - `amass.resolver`
+  # * `-rf` - `amass.resolver_file`
+  # * `-t` - `amass.type`
+  # * `-timeout` - `amass.timeout`
+  # * `-v` - `amass.verbose`
+  #
   # @api public
   #
   class Command < CommandMapper::Command
