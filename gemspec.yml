@@ -15,6 +15,7 @@ metadata:
   source_code_uri:   https://github.com/postmodern/ruby-amass
   bug_tracker_uri:   https://github.com/postmodern/ruby-amass/issues
   changelog_uri:     https://github.com/postmodern/ruby-amass/blob/master/ChangeLog.md
+  rubygems_mfa_required: 'true'
 
 required_ruby_version: ">= 2.0.0"
 
