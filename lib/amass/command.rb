@@ -4,6 +4,12 @@ module Amass
   #
   # Represents the `amass` command and it's subcommands.
   #
+  # ## Example
+  #
+  #     require 'amass/command'
+  #     
+  #     Amass::Command.run(enum: {domain: 'example.com', output_dir: '/path/to/output/dir'})
+  #
   # ## `amass` subcommands
   #
   # ### `amass intel`
