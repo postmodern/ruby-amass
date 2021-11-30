@@ -2,6 +2,11 @@ require 'amass/hostname'
 
 module Amass
   module Parsers
+    #
+    # Parses single-line hostnames.
+    #
+    # @api private
+    #
     module TXT
       #
       # @return [Hostname]

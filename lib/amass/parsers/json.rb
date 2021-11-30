@@ -5,6 +5,11 @@ require 'json'
 
 module Amass
   module Parsers
+    #
+    # Parses single-line JSON hashes.
+    #
+    # @api private
+    #
     module JSON
       #
       # @return [Hostname]
