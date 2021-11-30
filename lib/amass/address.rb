@@ -25,7 +25,7 @@ module Amass
     #
     # @param [String] desc
     #
-    def initialize(ip: , cidr: , asn: , desc: nil)
+    def initialize(ip: , cidr: , asn: , desc: )
       @ip   = ip
       @cidr = cidr
       @asn  = asn
