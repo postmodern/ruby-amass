@@ -5,6 +5,15 @@ module Amass
   #
   # Represents either a `.json` or `.txt` output file.
   #
+  # ## Example
+  #
+  #     require 'amass/output_file'
+  #     
+  #     output_file = Amass::OutputFile.new('/path/to/amass.json')
+  #     output_file.each do |hostname|
+  #       p hostname
+  #     end
+  #
   # @api public
   #
   class OutputFile
