@@ -1,4 +1,5 @@
 require 'amass/hostname'
+require 'amass/address'
 
 require 'json'
 
@@ -14,6 +15,13 @@ module Amass
         return map_hostname(json)
       end
 
+      private
+
+      #
+      # @param [Hash{Symbol => Object}] json
+      #
+      # @return [Hostname]
+      #
       def self.map_hostname(json)
         Hostname.new(
           name:      json[:name],
@@ -24,6 +32,11 @@ module Amass
         )
       end
 
+      #
+      # @param [Hash{Symbol => Object}] json
+      #
+      # @return [Address]
+      #
       def self.map_address(json)
         Address.new(**json)
       end
