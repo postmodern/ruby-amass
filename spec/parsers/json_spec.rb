@@ -3,12 +3,12 @@ require 'amass/parsers/json'
 
 describe Amass::Parsers::JSON do
   describe ".parse" do
-    let(:name) { "www.example.com" }
+    let(:name)   { "www.example.com" }
     let(:domain) { "example.com" }
 
-    let(:ip1) { "93.184.216.34" }
+    let(:ip1)   { "93.184.216.34" }
     let(:cidr1) { "93.184.216.0/24" }
-    let(:asn1) { 15133 }
+    let(:asn1)  { 15133 }
     let(:desc1) { "EDGECAST - MCI Communications Services, Inc. d/b/a Verizon Business" }
 
     let(:ip2)   { "2606:2800:220:1:248:1893:25c8:1946" }
@@ -16,7 +16,7 @@ describe Amass::Parsers::JSON do
     let(:asn2)  { 15133 }
     let(:desc2) { "EDGECAST - MCI Communications Services, Inc. d/b/a Verizon Business" }
 
-    let(:tag) { "cert" }
+    let(:tag)     { "cert" }
     let(:source1) { "CertSpotter" }
 
     let(:line) do
