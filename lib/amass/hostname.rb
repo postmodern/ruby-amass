@@ -21,6 +21,17 @@ module Amass
     # @return [Array<String>]
     attr_reader :sources
 
+    #
+    # @param [String] name
+    #
+    # @param [String, nil] domain
+    #
+    # @param [Array<Address>] addresses
+    #
+    # @param [String, nil] tag
+    #
+    # @param [Array<String>] sources
+    #
     def initialize(name: , domain: nil, addresses: [], tag: nil, sources: [])
       @name      = name
       @domain    = domain
