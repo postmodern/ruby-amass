@@ -35,9 +35,14 @@ module Amass
     attr_reader :parser
 
     #
+    # Initializes the output file.
+    #
     # @param [String] path
+    #   The path to the output file.
     #
     # @param [:json, :txt] format
+    #   The optional format of the output file. If not given, it will be
+    #   inferred by the path's file extension.
     #
     def initialize(path, format: self.class.infer_format(path))
       @path   = File.expand_path(path)
@@ -77,11 +82,16 @@ module Amass
     end
 
     #
+    # Parses the contents of the output file.
+    #
     # @yield [hostname]
+    #   The given block will be passed each parsed hostname.
     #
     # @yieldparam [Hostname] hostname
+    #   A parsed hostname from the output file.
     #
     # @return [Enumerator]
+    #   If no block is given, an Enumerator object will be returned.
     #
     def each
       return enum_for(__method__) unless block_given?
@@ -96,7 +106,10 @@ module Amass
     end
 
     #
+    # Converts the output file to a String.
+    #
     # @return [String]
+    #   The path to the output file.
     #
     def to_s
       @path
