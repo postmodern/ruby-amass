@@ -3,6 +3,7 @@ require 'amass/output_file'
 
 describe Amass::OutputFile do
   let(:fixtures_dir) { File.expand_path(File.join(__dir__,'fixtures')) }
+
   describe ".infer_format" do
     subject { described_class.infer_format(path) }
 
