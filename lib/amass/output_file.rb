@@ -22,8 +22,8 @@ module Amass
     #
     # @api semipublic
     PARSERS = {
-      :json => Parsers::JSON,
-      :txt  => Parsers::TXT
+      json: Parsers::JSON,
+      txt:  Parsers::TXT
     }
 
     # The path to the output file.
