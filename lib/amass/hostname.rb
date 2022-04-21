@@ -69,5 +69,7 @@ module Amass
       @name
     end
 
+    alias to_str to_s
+
   end
 end
